@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 const port = process.env.PORT || 3001;
 
@@ -13,6 +14,8 @@ app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => res.send('Server is ready'));
 
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server Started on port ${port}`));
 
