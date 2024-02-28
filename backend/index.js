@@ -13,6 +13,10 @@ connectDB();
 
 const app = express();
 
+//gérer les données JSON et URL encodées dans les requêtes entrantes
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Le terme “api”  est une convention lors de la création d’APIs Web.
 app.use('/api/users', userRoutes);
 

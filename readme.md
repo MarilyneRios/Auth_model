@@ -49,7 +49,7 @@
 
 3/  Dans le terminal : node index.js => Server Started on port 3001
 
-4/  npm run server
+4/ **npm run server**
 
     > authentification_model@1.0.0 server
     > nodemon index.js
@@ -140,6 +140,11 @@
 
 export default connectDB;
 
+13/ Créer un dossier : models
+
+14/ Créer un fichier : userModel.js
+
+
 # Tester les routes:
 
 1/ routes user/auth :
@@ -158,3 +163,21 @@ export default connectDB;
   
  .get( getUserProfile)
  .put( updateUserProfile);
+
+ 3/ récuperation du body.req avec thunder client
+
+    post http://localhost:3001/api/users
+
+    Body => Form-encode => username : riri
+    {
+    "message": "Register User"
+    }
+    clg = riri
+
+    /// Dans userController
+    const registerUser = asyncHandler(async (req, res) => {
+    const { username} = req.body;  
+    console.log(username);
+        res.status(200).json({message: 'Register User'});
+    });
+    ///
