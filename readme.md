@@ -122,6 +122,24 @@
 
 12/ Créer un fichier : errorMiddleware.js
 
+13/ Créer un dossier : config
+
+14/ Créer un fichier : db.js
+
+    import mongoose from 'mongoose';
+
+    const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.VITE_DB_CONNECTION_STRING);
+        console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        process.exit(1);
+    }
+    };
+
+export default connectDB;
+
 # Tester les routes:
 
 1/ routes user/auth :
@@ -133,3 +151,10 @@
             {
             "message": "Auth User"
             }
+
+2/ route('/profile')
+
+ GET ou PUT + http://localhost:3001/api/users/profile
+  
+ .get( getUserProfile)
+ .put( updateUserProfile);
