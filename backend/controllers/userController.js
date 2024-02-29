@@ -34,11 +34,23 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/auth
 // @access  Public ( n’importe qui peut envoyer une requête à cette route)
 //monggose attend une promise => async
-const authUser = asyncHandler(async (req, res)  => {
-   // res.status(401);
-   // throw new Error('Invalid email or password');
+const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-    res.status(200).json({message: 'Auth User'});
+  const user = await User.findOne({ email });
+
+  if (user && (await user.matchPassword(password))) {
+    generateToken(res, user._id);
+
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    res.status(401);
+    throw new Error('Invalid email or password');
+  }
 });
 
 
