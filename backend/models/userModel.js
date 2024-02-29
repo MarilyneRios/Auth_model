@@ -7,13 +7,12 @@ const UserSchema = mongoose.Schema(
     username: {
       type: String,
       required: true,
-      unique : true
-    },
+       },
     email: {
       type: String,
       required: true,
       unique: true,
-      unique : true
+   
     },
     password: {
       type: String,
@@ -42,6 +41,6 @@ UserSchema.pre('save', async function (next) {
 });
 
 // Création du modèle utilisateur
-const UserModel = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
 
-export default UserModel;
+export default User;

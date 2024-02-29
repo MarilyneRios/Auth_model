@@ -1,23 +1,24 @@
 //bibliothèque d’assistance pour gérer les exceptions dans les fonctions asynchrones
 //(les exceptions non gérées dans les routes asynchrones seront automatiquement transmises à votre middleware d’erreur)
 import asyncHandler from 'express-async-handler';
-
+import User from '../models/userModel.js';
+import generateToken from '../utils/generateToken.js';
 
 // @desc    Register a new user
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password} = req.body;  
-  console.log(username);
+  console.log('le username : ' + username + ', le email : '+ email + ' et le password : '+ password);
 
-  const userExists = await UserModel.findOne({ email: email });
+  const userExists = await User.findOne({ email: email });
 
   if (userExists) {
     res.status(400);
     throw new Error('User already exists');
   }
 
-  const user = await UserModel.create({ username, email, password });
+  const user = await User.create({ username, email, password });
   if (user) {
     generateToken(res, user._id);
 
