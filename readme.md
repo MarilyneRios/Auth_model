@@ -181,3 +181,62 @@ export default connectDB;
         res.status(200).json({message: 'Register User'});
     });
     ///
+
+# fontend
+
+1/ npm create vite@latest frontend
+    a/ y
+    b/ react
+    c/ JavaScript
+
+2/  cd frontend
+
+3/ npm i (install)
+
+4/   npm run dev
+
+5/ vite.config.js : 
+    import { defineConfig } from 'vite'
+    import react from '@vitejs/plugin-react'
+
+    export default defineConfig({
+        plugins: [react()],
+        server: {
+        port: 3000,
+        proxy: {
+        '/api': {
+            target: 'http://localhost:3001',
+            changeOrigin: true,
+        },
+        },
+        },
+    })
+
+6/ Dans le dossier racine : package.json :
+
+     "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "server": "nodemon index.js",
+    "client": "npm run dev --prefix frontend" 
+  },
+
+7/ Retour à la racine du dossier (cd ..)
+ 
+8/ npm run client
+
+# Racine do projet : concurrently
+
+concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.
+
+1/ npm i -D concurrently 
+
+2/Dans le dossier racine : package.json :
+
+     "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "server": "nodemon index.js",
+    "client": "npm run dev --prefix frontend" 
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
