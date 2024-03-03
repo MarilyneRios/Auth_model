@@ -59,7 +59,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @access  Private (token)
 const getUserProfile = asyncHandler(async (req, res) => {
 
-    //res.status(200).json({message: 'User profil successfully'});
+    //res.status(200).json({message: 'User profil successfully'});//tester la route
 
     console.log(req.user); // on peut lire le id, username, email, les dates de création et update
 
@@ -84,7 +84,33 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/profile
 // @access  Private (token)
 const updateUserProfile = asyncHandler(async (req, res) => {
-    res.status(200).json({message: 'Update user profil successfully'});
+   // res.status(200).json({message: 'Update user profil successfully'});//tester la route
+
+      // Récupère user avec _id fourni dans la requête
+   const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+
+     // Si un mot de passe est donné, met à jour du password
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+
+     // Sauvegarder les modifications 
+    const updatedUser = await user.save();
+
+    // Renvoie une réponse JSON contenant les informations mises à jour
+    res.json({
+      _id: updatedUser._id,
+      username: updatedUser.username,
+      email: updatedUser.email,
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
 
