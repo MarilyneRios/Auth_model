@@ -44,7 +44,7 @@ const authUser = asyncHandler(async (req, res) => {
 
     res.json({
       _id: user._id,
-      name: user.name,
+      username: user.username,
       email: user.email,
     });
   } else {
@@ -58,7 +58,25 @@ const authUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private (token)
 const getUserProfile = asyncHandler(async (req, res) => {
-    res.status(200).json({message: 'User profil successfully'});
+
+    //res.status(200).json({message: 'User profil successfully'});
+
+    console.log(req.user); // on peut lire le id, username, email, les dates de création et update
+
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      res.json({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+      });
+
+      res.status(200).json(user);
+    } else {
+      res.status(404);
+      throw new Error('User not found');
+    }
 });
 
 
@@ -74,6 +92,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 // @route   POST /api/users/logout
 // @access  Public
 const logoutUser = (req, res) => {
+  // Supprime le cookie
     res.cookie('jwt', '', {
       httpOnly: true,
       expires: new Date(0),
