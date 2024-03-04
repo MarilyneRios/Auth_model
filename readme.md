@@ -241,6 +241,8 @@ export default connectDB;
 
 12/ HomeScreen.jsx //rafce
 
+13/ npm i react-router-dom
+
 # Racine do projet : concurrently
 
 concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.
