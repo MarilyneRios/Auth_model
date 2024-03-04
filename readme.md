@@ -225,6 +225,22 @@ export default connectDB;
  
 8/ npm run client
 
+9/ npm i bootstrap-icons,npm i react-bootstrap bootstrap et npm install react-icons puis npm install react-router-bootstrap
+
+
+
+10/ dans main.jsx :
+  
+    import 'bootstrap/dist/css/bootstrap.min.css';
+  
+11/ Création du dossier : components
+
+12/ header.jsx //rafce
+
+11/ Création du dossier : screens
+
+12/ HomeScreen.jsx //rafce
+
 # Racine do projet : concurrently
 
 concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.
