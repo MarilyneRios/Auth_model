@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './components/Header'
+import HomeScreen from './Screens/HomeScreen'
 
 function App() {
  
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
     <Header/>
-      <h1>Mern Authentification modèle</h1>
+    <HomeScreen/>
     </>
   )
 }
