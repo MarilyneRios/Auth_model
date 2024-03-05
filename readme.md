@@ -246,13 +246,22 @@ export default connectDB;
 14/  creation du routeur dans main.jsx ( gérer la navigation, définir des routes ) , 
 Outlet dans App.jsx (afficher le contenu de la route/ screen), 
 LinkContainer : 
- - permet de créer des liens de navigation qui interagissent avec le routeur
- - envelopper des éléments de la bibliothèque React Bootstrap et les rendre réactifs aux changements d’URL
+ - permet de créer des liens de navigation qui interagissent avec le routeur.
+ - envelopper des éléments de la bibliothèque React Bootstrap et les rendre réactifs aux changements d’URL.
 
 15/ LoginScreen : formulaire + états 
     main : ajout route login
     RegisterScreen : formulaire + états
     main : ajout route register
+
+16/ npm i @reduxjs/toolkit react-redux   
+
+17/ créer le fichier store.js dans le dossier src
+
+    - Le store est l’endroit où vous stockez l’état global de votre application et où vous gérez les actions et les réducteurs.
+    - Le composant Provider  rend le store Redux disponible pour le reste de votre application.
+
+18/ main.jsx : ajout provider et store
 
 # Racine do projet : concurrently
 
