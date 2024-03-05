@@ -243,6 +243,17 @@ export default connectDB;
 
 13/ npm i react-router-dom
 
+14/  creation du routeur dans main.jsx ( gérer la navigation, définir des routes ) , 
+Outlet dans App.jsx (afficher le contenu de la route/ screen), 
+LinkContainer : 
+ - permet de créer des liens de navigation qui interagissent avec le routeur
+ - envelopper des éléments de la bibliothèque React Bootstrap et les rendre réactifs aux changements d’URL
+
+15/ LoginScreen : formulaire + états 
+    main : ajout route login
+    RegisterScreen : formulaire + états
+    main : ajout route register
+
 # Racine do projet : concurrently
 
 concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.

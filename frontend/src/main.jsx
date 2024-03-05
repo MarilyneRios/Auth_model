@@ -5,6 +5,8 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import HomeScreen from './Screens/HomeScreen.jsx';
+import LoginScreen from './Screens/LoginScreen.jsx';
+import RegisterScreen from './Screens/RegisterScreen.jsx';
 
 
 // Création du routeur
@@ -12,7 +14,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
-      
+      <Route  path='/login' element={<LoginScreen />} />
+      <Route  path='/register' element={<RegisterScreen />} />
     </Route>
   )
 );
