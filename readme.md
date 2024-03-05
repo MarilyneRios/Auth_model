@@ -263,6 +263,10 @@ LinkContainer :
 
 18/ main.jsx : ajout provider et store
 
+19/ Créer un dossier Slices puis fichier authSlice.js et apiSlice.js
+
+20/ Ajout auth: authReduce dans le store.js
+
 # Racine do projet : concurrently
 
 concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.
