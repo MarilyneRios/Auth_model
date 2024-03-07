@@ -267,6 +267,12 @@ LinkContainer :
 
 20/ Ajout auth: authReduce dans le store.js
 
+21/  RTK Query :
+apiSlice et usersApiSlice
+
+22/ Pour montrer les erreur de connexion au user
+npm install  react-toastify
+
 # Racine do projet : concurrently
 
 concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.
