@@ -276,6 +276,9 @@ npm install  react-toastify
 23/ hearder: afficher le username + logout+ ajout icon de react-icon
     userApiSlice: logout
     création loader
+24/ relier register frontend et backend:
+    usersApiSlice
+    RegisterScreen
 
 # Racine do projet : concurrently
 

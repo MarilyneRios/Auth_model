@@ -83,9 +83,10 @@ const RegisterScreen = () => {
             autoComplete='new-password'
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
+
         </Form.Group>
         <Form.Group className='my-2' controlId='confirmPassword'>
-          <Form.Label>Confirmer mot de passe</Form.Label>
+          <Form.Label>Confirmer votre mot de passe</Form.Label>
           <Form.Control
             type='password'
             placeholder='Confirmer votre mot de passe'
