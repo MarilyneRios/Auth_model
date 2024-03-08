@@ -295,3 +295,7 @@ concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps
     "client": "npm run dev --prefix frontend" 
     "dev": "concurrently \"npm run server\" \"npm run client\""
     },
+
+
+# Deploiement
+dans dossier frontend : npm run build

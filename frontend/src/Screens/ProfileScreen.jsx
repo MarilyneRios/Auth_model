@@ -40,7 +40,8 @@ const ProfileScreen = () => {
           password,
         }).unwrap();
         console.log(res);
-        dispatch(setCredentials(res));
+        //dispatch(setCredentials(res));
+        dispatch(setCredentials({...res}));
         toast.success('Le profil est mis à jour avec succès');
       } catch (err) {
         toast.error(err?.data?.message || err.error);

@@ -35,7 +35,9 @@ const Header = () => {
               <LinkContainer to='/'>
                 <Navbar.Brand>MERN Auth modèle</Navbar.Brand>
               </LinkContainer>
-
+              <LinkContainer to='/about'>
+                <Navbar.Brand>A propos</Navbar.Brand>
+              </LinkContainer>
               <Navbar.Toggle aria-controls='basic-navbar-nav'/>
               <Navbar.Collapse id='basic-navbar-nav'>
 
@@ -48,6 +50,13 @@ const Header = () => {
                       <CgProfile/> Profile
                       </NavDropdown.Item>
                     </LinkContainer>
+
+                    <LinkContainer to='/private'>
+                      <NavDropdown.Item>
+                       Page Privée
+                      </NavDropdown.Item>
+                    </LinkContainer>
+                   
                     <NavDropdown.Item  onClick={handleLogout}>
                     <FaSignOutAlt/>Logout
                     </NavDropdown.Item>

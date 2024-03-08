@@ -11,7 +11,8 @@ import HomeScreen from './Screens/HomeScreen.jsx';
 import LoginScreen from './Screens/LoginScreen.jsx';
 import RegisterScreen from './Screens/RegisterScreen.jsx';
 import ProfileScreen from './Screens/ProfileScreen.jsx';
-
+import AboutScreen from './Screens/AboutScreen.jsx';
+import PrivatyScreen from './Screens/PrivatyScreen.jsx';
 
 // Création du routeur
 const router = createBrowserRouter(
@@ -19,10 +20,12 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route  path='/login' element={<LoginScreen />} />
+      <Route path='/about' element={<AboutScreen/>} />
       <Route  path='/register' element={<RegisterScreen />} />
       {/* Toutes les routes qui doivent être privées */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen/>} />
+        <Route path='/private' element={<PrivatyScreen/>} />
       </Route>
     </Route>
   )
