@@ -273,6 +273,10 @@ apiSlice et usersApiSlice
 22/ Pour montrer les erreur de connexion au user
 npm install  react-toastify
 
+23/ hearder: afficher le username + logout+ ajout icon de react-icon
+    userApiSlice: logout
+    création loader
+
 # Racine do projet : concurrently
 
 concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps.
