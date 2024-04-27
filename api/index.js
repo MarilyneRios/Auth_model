@@ -51,4 +51,4 @@ app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server Started on port ${port}`));
 
-module.exports = app;
+export default app;
