@@ -1,4 +1,4 @@
-//configuration d’endpoints pour gérer les appels d’API liés aux users avec Redux en utilisant RTK Query
+//usersApliSlice.js
 import { apiSlice } from './apiSlice';
 
 // l’URL de base pour les appels d’API liés users

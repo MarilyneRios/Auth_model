@@ -7,7 +7,7 @@
 3/ Créer un dossier backend
 
 4/ Dans package.json :
-    "type": "module", (utilise import au lieu de require)
+    "type": "module", (utilise import au lieu de require)/////////
     "description": "MERN authentication system",
     "main": "backend/index.js",
 
@@ -103,7 +103,7 @@
         
     };
 
-10/ npm install **express-async-handler**
+10/ npm install express-async-handler
     Une **bibliothèque** d’assistance pour gérer les exceptions dans les **fonctions asynchrones**
     (les exceptions non gérées dans les routes asynchrones seront automatiquement transmises à votre middleware d’erreur)
 
@@ -298,4 +298,23 @@ concurrently permet d’exécuter plusieurs commandes en parallèle/ même temps
 
 
 # Deploiement
-dans dossier frontend : npm run build
+1/ Dans dossier frontend : npm run build
+
+2/ Dans backend : index.js
+    if (process.env.NODE_ENV === 'production') {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, '/frontend/dist')));
+    app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....');
+  });
+}
+
+C’est une configuration type pour les applications qui ont à la fois un backend (API) et un frontend (client).
+
+3/ .env
+
+NODE_ENV=production
