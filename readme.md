@@ -318,3 +318,5 @@ C’est une configuration type pour les applications qui ont à la fois un backe
 3/ .env
 
 NODE_ENV=production
+
+test
