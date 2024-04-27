@@ -126,8 +126,6 @@ const logoutUser = (req, res) => {
     res.status(200).json({ message: 'Logout user successfully' });
   };
 
-
-
   export {
     authUser,
     registerUser,
@@ -135,3 +133,16 @@ const logoutUser = (req, res) => {
     getUserProfile,
     updateUserProfile,
   };
+
+  /*
+'jwt' =le nom du cookie.
+'' : C’est la valeur du cookie, 
+    ce qui efface essentiellement la valeur du cookie.
+
+Les options du cookie:
+httpOnly: true signifie que le cookie ne peut être accédé que par le serveur web et pas par le code côté client 
+=> une mesure de sécurité qui aide à prévenir les attaques de type cross-site scripting (XSS).
+
+expires: new Date(0) définit la date d’expiration du cookie à une date dans le passé (le 1er janvier 1970 à 00:00:00 UTC, pour être précis). 
+Cela fait que le navigateur expire immédiatement le cookie, ce qui a pour effet de le supprimer.
+  */
