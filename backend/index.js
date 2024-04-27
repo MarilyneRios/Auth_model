@@ -1,3 +1,4 @@
+//index.js
 import path from 'path';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -6,7 +7,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/userRoutes.js';
-import cors from 'cors'; // Correction ici
+import cors from 'cors'; 
 
 const port = process.env.PORT || 3001;
 
@@ -14,7 +15,10 @@ connectDB();
 
 const app = express(); 
 
-app.use(cors()); 
+app.use(cors({
+  origin: 'http://localhost:3000'
+}
+)); 
 
 //gérer les données JSON et URL encodées dans les requêtes entrantes
 app.use(express.json());

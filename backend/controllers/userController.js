@@ -1,5 +1,4 @@
-//bibliothèque d’assistance pour gérer les exceptions dans les fonctions asynchrones
-//(les exceptions non gérées dans les routes asynchrones seront automatiquement transmises à votre middleware d’erreur)
+//userController.js
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
 import generateToken from '../utils/generateToken.js';
