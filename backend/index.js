@@ -1,5 +1,5 @@
-//index.js
 import path from 'path';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -8,6 +8,10 @@ import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
 
+// resolving dirname for ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+//console.log(__dirname);//D:\Projets développement\vite\authentification_model\Auth_model\backend
 
 const port = process.env.PORT || 5000;
 
@@ -22,18 +26,23 @@ app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-  const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'))
+// --------------------------deployment------------------------------
+
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname1, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
   );
 } else {
-  app.get('/', (req, res) => {
-    res.send('API is running....');
+  app.get("/", (req, res) => {
+    res.send("API is running..");
   });
 }
+// --------------------------deployment------------------------------
 
 app.use(notFound);
 app.use(errorHandler);

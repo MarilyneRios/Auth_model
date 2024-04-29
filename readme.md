@@ -319,4 +319,5 @@ C’est une configuration type pour les applications qui ont à la fois un backe
 
 NODE_ENV=production
 
-test
+### démarrer le server
+npm start et npm run server et node backend/index.js
