@@ -7,6 +7,9 @@ import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
+const { v4: uuidv4 } = require('uuid');
+console.log(uuidv4()); 
+
 
 // resolving dirname for ES module
 const __filename = fileURLToPath(import.meta.url);
@@ -26,7 +29,9 @@ app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
+/*
 // --------------------------deployment------------------------------
 
 
@@ -37,11 +42,11 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"))
   );
 } else {
-  app.get("/", (req, res) => {
+  app.get("/api", (req, res) => {
     res.send("API is running..");
   });
 }
-// --------------------------deployment------------------------------
+// --------------------------deployment------------------------------*/
 
 app.use(notFound);
 app.use(errorHandler);
