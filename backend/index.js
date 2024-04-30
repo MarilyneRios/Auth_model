@@ -7,7 +7,7 @@ import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
-const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
 console.log(uuidv4()); 
 
 
