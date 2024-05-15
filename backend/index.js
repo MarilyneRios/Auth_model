@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import cors from 'cors';
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -16,6 +17,7 @@ connectDB();
 
 const app = express();
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,13 +25,32 @@ app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+    
+    ],
+    credentials: true,
+    
+    methods: ['GET', 'PATCH','POST', 'PUT', 'DELETE'],
+  }),
+);
+
+app.use((req, res, next) => {
+  console.log(res.get('Access-Control-Allow-Origin'));
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('CORS is enabled for all origins!');
+});
+
+//app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // --------------------------deployment------------------------------
 // resolving dirname for ES module
 /*
-
-
 //console.log(__dirname);//D:\Projets développement\vite\authentification_model\Auth_model\backend
 */
 const __filename = fileURLToPath(import.meta.url);
@@ -47,7 +68,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // --------------------------deployment------------------------------
-
+/*
 //--------------------middleware qui ajoute les en-têtes -----------------
 app.use((req, res, next) => {
   console.log('1 CORS middleware called');
@@ -65,7 +86,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//--------------------middleware qui ajoute les en-têtes -----------------
+//--------------------middleware qui ajoute les en-têtes -----------------*/
 
 
 app.use(notFound);

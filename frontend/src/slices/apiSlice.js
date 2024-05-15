@@ -27,8 +27,9 @@ const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     // Use the `getState` function to get the current state
     const { user } = getState();
+    console.log(user); 
     // token
-    if (user.token) {
+    if (user && user.token) {
       headers.set('authorization', `Bearer ${user.token}`);
     }
     return headers;
