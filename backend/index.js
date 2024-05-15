@@ -36,7 +36,7 @@ app.use('/api/users', userRoutes);
 app.use(
   cors({
     origin: '*',
-    credentials: true,
+    //credentials: true,
     methods: ['GET', 'PATCH','POST', 'PUT', 'DELETE'],
   }),
 );
