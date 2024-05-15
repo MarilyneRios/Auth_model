@@ -23,7 +23,7 @@ import { fetchBaseQuery, createApi } from '@reduxjs/toolkit/query/react';
 
 //configuration requête
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://auth-model.onrender.com/',
+  baseUrl: 'https://auth-model.onrender.com/',//
   prepareHeaders: (headers, { getState }) => {
     // Use the `getState` function to get the current state
     const { user } = getState();

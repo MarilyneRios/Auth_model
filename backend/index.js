@@ -28,11 +28,10 @@ app.use('/api/users', userRoutes);
 app.use(
   cors({
     origin: [
-      'http://localhost:3000',
+      '*',
     
     ],
     credentials: true,
-    
     methods: ['GET', 'PATCH','POST', 'PUT', 'DELETE'],
   }),
 );
