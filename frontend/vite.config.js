@@ -8,8 +8,8 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
-        //target: 'https://auth-model.onrender.com/',
+       // target: 'http://localhost:3001',
+        target: 'https://auth-model.onrender.com/',
         changeOrigin: true,
       },
     },

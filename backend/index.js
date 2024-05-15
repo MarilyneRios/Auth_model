@@ -67,11 +67,11 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 // --------------------------deployment------------------------------
-/*
+
 //--------------------middleware qui ajoute les en-têtes -----------------
 app.use((req, res, next) => {
   console.log('1 CORS middleware called');
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Credentials', 'true'); // credentials true comme dans le front
   header("Access-Control-Allow-Headers: Content-Type, *");
@@ -85,7 +85,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//--------------------middleware qui ajoute les en-têtes -----------------*/
+//--------------------middleware qui ajoute les en-têtes -----------------
 
 
 app.use(notFound);
