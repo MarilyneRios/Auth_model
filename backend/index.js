@@ -10,12 +10,6 @@ import userRoutes from './routes/userRoutes.js';
 import { v4 as uuidv4 } from 'uuid';
 console.log(uuidv4()); 
 
-
-// resolving dirname for ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-//console.log(__dirname);//D:\Projets développement\vite\authentification_model\Auth_model\backend
-
 const port = process.env.PORT || 3001;
 
 connectDB();
@@ -31,9 +25,13 @@ app.use('/api/users', userRoutes);
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-/*
 // --------------------------deployment------------------------------
-
+// resolving dirname for ES module
+/*
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+//console.log(__dirname);//D:\Projets développement\vite\authentification_model\Auth_model\backend
+*/
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
@@ -46,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
     res.send("API is running..");
   });
 }
-// --------------------------deployment------------------------------*/
+// --------------------------deployment------------------------------
 
 app.use(notFound);
 app.use(errorHandler);
