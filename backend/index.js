@@ -28,10 +28,12 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 // --------------------------deployment------------------------------
 // resolving dirname for ES module
 /*
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+
 //console.log(__dirname);//D:\Projets développement\vite\authentification_model\Auth_model\backend
 */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "/frontend/dist")));
