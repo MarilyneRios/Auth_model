@@ -27,10 +27,7 @@ app.use('/api/users', userRoutes);
 
 app.use(
   cors({
-    origin: [
-      '*',
-    
-    ],
+    origin: '*',
     credentials: true,
     methods: ['GET', 'PATCH','POST', 'PUT', 'DELETE'],
   }),
@@ -42,6 +39,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', true);
   res.send('CORS is enabled for all origins!');
 });
 
@@ -69,21 +70,21 @@ if (process.env.NODE_ENV === "production") {
 // --------------------------deployment------------------------------
 
 //--------------------middleware qui ajoute les en-têtes -----------------
-app.use((req, res, next) => {
-  console.log('1 CORS middleware called');
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  res.header('Access-Control-Allow-Credentials', 'true'); // credentials true comme dans le front
-  header("Access-Control-Allow-Headers: Content-Type, *");
-  console.log('2 CORS headers set');
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-    console.log('3 OPTIONS request');
-    return res.status(200).json({});
-  }
-  console.log('4 Not an OPTIONS request')
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log('1 CORS middleware called');
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true'); // credentials true comme dans le front
+//   header("Access-Control-Allow-Headers: Content-Type, *");
+//   console.log('2 CORS headers set');
+//   if (req.method === 'OPTIONS') {
+//     res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+//     console.log('3 OPTIONS request');
+//     return res.status(200).json({});
+//   }
+//   console.log('4 Not an OPTIONS request')
+//   next();
+// });
 
 //--------------------middleware qui ajoute les en-têtes -----------------
 
