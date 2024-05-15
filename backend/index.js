@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 console.log(uuidv4()); 
 
 const port = process.env.PORT || 3001;
+const adresses = ["http://localhost:3000", "*"];
 
 connectDB();
 
@@ -20,6 +21,14 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(function(req, res, next) {
+  for (const address of addresses) {
+      res.header("Access-Control-Allow-Origin", address)
+  }
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"),
+  next()
+})
 
 app.use(cookieParser());
 
@@ -39,10 +48,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  // res.setHeader('Access-Control-Allow-Origin', '*');
+  // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  // res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  // res.setHeader('Access-Control-Allow-Credentials', true);
   res.send('CORS is enabled for all origins!');
 });
 
